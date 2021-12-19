@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.android.guicelebrini.youtubeapi.helper.ToastCreator;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
@@ -38,6 +39,7 @@ public class MainActivity extends YouTubeBaseActivity {
 
 
                 if (!wasPlaying) {
+                    //cueVideo doesn't play automatically
                     youTubePlayer.cuePlaylist("PL15FF6F444D5A4B8E");
                 }
             }
@@ -63,7 +65,7 @@ public class MainActivity extends YouTubeBaseActivity {
 
             @Override
             public void onPaused() {
-
+                ToastCreator.shortShow("Video paused", getApplicationContext());
             }
 
             @Override
@@ -87,6 +89,7 @@ public class MainActivity extends YouTubeBaseActivity {
         stateChangeListener = new YouTubePlayer.PlayerStateChangeListener() {
             @Override
             public void onLoading() {
+                ToastCreator.shortShow("Loading video", getApplicationContext());
             }
 
             @Override
